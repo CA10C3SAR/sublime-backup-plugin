@@ -13,7 +13,7 @@ class CreateBackupCopy(sublime_plugin.TextCommand):
             target_target = os.path.join(target_dir, target_file)
             os.makedirs(target_dir, exist_ok=True)
             
-            date_dir = [%Y][%m][%d]
+            date_dir = "[%Y][%m][%d]"
             os.makedirs(date_dir, exist_ok=True)
             try:
                 shutil.copyfile(file_name, target_target)
