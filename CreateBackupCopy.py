@@ -7,7 +7,7 @@ class CreateBackupCopy(sublime_plugin.TextCommand):
             dir_name = os.path.dirname(file_name)
             base_name = os.path.basename(file_name)
             base_base, base_ext = os.path.splitext(base_name)
-            time_stamp = datetime.datetime.now().strftime("_%Y-%m-%d_%H%M%S")
+            time_stamp = datetime.datetime.now().strftime("[%Y][%m][%d] [%H][%M][%S]")
             target_dir = os.path.join(dir_name, '.sublime-backup')
             target_file = base_base+time_stamp+base_ext
             target_target = os.path.join(target_dir, target_file)
