@@ -11,10 +11,17 @@ class CreateBackupCopy(sublime_plugin.TextCommand):
             target_dir = os.path.join(dir_name, '.sublime-backup')
             target_file = base_base+time_stamp+base_ext
             target_target = os.path.join(target_dir, target_file)
+			
             os.makedirs(target_dir, exist_ok=True)
+			
             date_dir = os.path.join(target_dir, datetime.datetime.now().strftime("Data [%Y][%m][%d]"))
             os.makedirs(date_dir, exist_ok=True)
-            target_target = os.path.join(date_dir, target_file)
+			
+            file_dir = os.path.join(date_dir, base_base)
+            os.makedirs(file_dir, exist_ok=True)
+			
+
+            target_target = os.path.join(file_dir, target_file)
             try:
                 shutil.copyfile(file_name, target_target)
                 sublime.status_message("Created backup copy %s" % target_file)
